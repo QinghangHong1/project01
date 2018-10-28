@@ -69,6 +69,7 @@ int main(int argc, char* argv[])
 		  if(!exist){
 			  word_array[used].set_word(word);
 			  word_array[used].addition(files[i]);
+			  used++;
 		  }
 			  
 
