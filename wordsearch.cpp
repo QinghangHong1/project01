@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
 {
   string dir; //
   vector<string> files = vector<string>();
-  word word_array[1000];
+  Word word_array[1000];
   int used=0;
 
   if (argc < 2)
@@ -83,7 +83,7 @@ int main(int argc, char* argv[])
   cin>>user_word;
   for(int a=0;a<used;a++){
 	  if(user_word==word_array[a].get_word()){
-		  word_array[i].printing();
+		  word_array[a].printing();
 		  break;
 		  return 0;
 	  }
