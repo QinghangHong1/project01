@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
   string user_word;
   cout<<"Enter word: ";
   cin>>user_word;
-  word_search(user_word,word_array,used);
+  word_search(user_word,word_array,used);//search the word and get the files&count
   
   return 0;
 
