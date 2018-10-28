@@ -12,51 +12,7 @@
 using namespace std;
 
 /*function... might want it in some class?*/
-int getdir (string dir, vector<string> &files)
-{
-  DIR *dp;
-  struct dirent *dirp;
-  if((dp  = opendir(dir.c_str())) == NULL) {
-    cout << "Error(" << errno << ") opening " << dir << endl;
-    return errno;
-  }
 
-  while ((dirp = readdir(dp)) != NULL) {
-    files.push_back(string(dirp->d_name));
-  }
-  closedir(dp);
-  return 0;
-}
-void word_search(string word,Word word_array[],int length){
-	  int word_exist=false;
-	  for(int a=0;a<length;a++){
-		  if(word==word_array[a].get_word()){
-			  word_array[a].printing();
-			  word_exist=true;
-			  break;
-			  
-		  }
-	  }
-  
-	  if(!word_exist){
-		  cout<<"The word does not exist."<<endl;
-	  }
-  }
-void update_word_array(string word, Word word_array[],int& length,string file){
-	bool exist=false;
-		  for(int j=0;j<length;j++){//if the word exist in the array,update the bag
-			  if(word==word_array[j].get_word()){
-				  word_array[j].addition(file);
-				  exist=true;
-				  
-			  }
-		  }
-		  if(!exist){//if the word does not exist in the array, create a word object for it and initialize
-			  word_array[length].set_word(word);
-			  word_array[length].addition(file);
-			  length++;
-		  }
-}
 
 int main(int argc, char* argv[])
 {
@@ -103,5 +59,49 @@ int main(int argc, char* argv[])
 
 }
 
+int getdir (string dir, vector<string> &files)
+{
+  DIR *dp;
+  struct dirent *dirp;
+  if((dp  = opendir(dir.c_str())) == NULL) {
+    cout << "Error(" << errno << ") opening " << dir << endl;
+    return errno;
+  }
 
+  while ((dirp = readdir(dp)) != NULL) {
+    files.push_back(string(dirp->d_name));
+  }
+  closedir(dp);
+  return 0;
+}
+void word_search(string word,Word word_array[],int length){
+	  int word_exist=false;
+	  for(int a=0;a<length;a++){
+		  if(word==word_array[a].get_word()){
+			  word_array[a].printing();
+			  word_exist=true;
+			  break;
+			  
+		  }
+	  }
+  
+	  if(!word_exist){
+		  cout<<"The word does not exist."<<endl;
+	  }
+  }
+void update_word_array(string word, Word word_array[],int& length,string file){
+	bool exist=false;
+		  for(int j=0;j<length;j++){//if the word exist in the array,update the bag
+			  if(word==word_array[j].get_word()){
+				  word_array[j].addition(file);
+				  exist=true;
+				  
+			  }
+		  }
+		  if(!exist){//if the word does not exist in the array, create a word object for it and initialize
+			  word_array[length].set_word(word);
+			  word_array[length].addition(file);
+			  length++;
+		  }
+}
 
