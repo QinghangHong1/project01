@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
     fin.close();
   }
   string user_word;
-  cout<<"Enter the word you want to search: "<<endl;
+  cout<<"Enter word: ";
   cin>>user_word;
   int user_word_exist=false;
   for(int a=0;a<used;a++){
