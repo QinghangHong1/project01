@@ -42,7 +42,21 @@ void word_search(string word,Word word_array[],int length){
 		  cout<<"The word does not exist."<<endl;
 	  }
   }
-
+void update_word_array(string word, Word word_array[],int& length,string file){
+	bool exist=false;
+		  for(int j=0;j<length;j++){//if the word exist in the array,update the bag
+			  if(word==word_array[j].get_word()){
+				  word_array[j].addition(file);
+				  exist=true;
+				  
+			  }
+		  }
+		  if(!exist){//if the word does not exist in the array, create a word object for it and initialize
+			  word_array[length].set_word(word);
+			  word_array[length].addition(file);
+			  length++;
+		  }
+}
 
 int main(int argc, char* argv[])
 {
@@ -74,23 +88,8 @@ int main(int argc, char* argv[])
       fin>>word;
       if(fin.eof()) { break;}
       else {
-		  bool exist=false;
-		  for(int j=0;j<used;j++){//if the word exist in the array,update the bag
-			  if(word==word_array[j].get_word()){
-				  word_array[j].addition(files[i]);
-				  exist=true;
-				  
-			  }
-		  }
-		  if(!exist){//if the word does not exist in the array, create a word object for it and initialize
-			  word_array[used].set_word(word);
-			  word_array[used].addition(files[i]);
-			  used++;
-		  }
+		  update_word_array(word,word_array,used,files[i]);
 			  
-
-	// Now the string "word" holds the keyword, and the string "files[i]" holds the document name.
-	// Use these two strings to search/insert in your array/list of words.
       }
     }
     fin.close();
