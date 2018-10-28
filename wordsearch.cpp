@@ -60,7 +60,7 @@ int main(int argc, char* argv[])
       else {
 		  bool exist=false;
 		  for(int j=0;j<used;j++){
-			  if(word==word_array[j]){
+			  if(word==word_array[j].get_word()){
 				  word_array[j].addition(files[i]);
 				  exist=true;
 				  
