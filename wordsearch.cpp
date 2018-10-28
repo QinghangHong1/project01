@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
     string word;
     while(true){
       fin>>word;
-      if(fin.eof()) {cout << "EOF " << files[i] << endl; break;}
+      if(fin.eof()) { break;}
       else {
 		  bool exist=false;
 		  for(int j=0;j<used;j++){
@@ -82,14 +82,18 @@ int main(int argc, char* argv[])
   string user_word;
   cout<<"Enter the word you want to search: "<<endl;
   cin>>user_word;
+  int user_word_exist=false;
   for(int a=0;a<used;a++){
 	  if(user_word==word_array[a].get_word()){
 		  word_array[a].printing();
+		  user_word_exist=true;
 		  break;
-		  return 0;
+		  
 	  }
   }
-  cout<<"The word does not exist."<<endl;
+  if(!user_word_exist){
+	  cout<<"The word does not exist."<<endl;
+  }
   return 0;
 
 }
