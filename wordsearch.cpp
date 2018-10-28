@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include "word.h"
+#include "wordsearch.h"
 
 
 using namespace std;
@@ -26,6 +27,21 @@ int getdir (string dir, vector<string> &files)
   closedir(dp);
   return 0;
 }
+void word_search(string word,Word word_array[],int length){
+	  int word_exist=false;
+	  for(int a=0;a<length;a++){
+		  if(word==word_array[a].get_word()){
+			  word_array[a].printing();
+			  word_exist=true;
+			  break;
+			  
+		  }
+	  }
+  
+	  if(!word_exist){
+		  cout<<"The word does not exist."<<endl;
+	  }
+  }
 
 
 int main(int argc, char* argv[])
@@ -47,7 +63,7 @@ int main(int argc, char* argv[])
       return(-2);
     }
 
-
+	
   string slash("/");
   for (unsigned int i = 0;i < files.size();i++) {
     if(files[i][0]=='.')continue; //skip hidden files
@@ -59,14 +75,14 @@ int main(int argc, char* argv[])
       if(fin.eof()) { break;}
       else {
 		  bool exist=false;
-		  for(int j=0;j<used;j++){
+		  for(int j=0;j<used;j++){//if the word exist in the array,update the bag
 			  if(word==word_array[j].get_word()){
 				  word_array[j].addition(files[i]);
 				  exist=true;
 				  
 			  }
 		  }
-		  if(!exist){
+		  if(!exist){//if the word does not exist in the array, create a word object for it and initialize
 			  word_array[used].set_word(word);
 			  word_array[used].addition(files[i]);
 			  used++;
@@ -82,18 +98,8 @@ int main(int argc, char* argv[])
   string user_word;
   cout<<"Enter word: ";
   cin>>user_word;
-  int user_word_exist=false;
-  for(int a=0;a<used;a++){
-	  if(user_word==word_array[a].get_word()){
-		  word_array[a].printing();
-		  user_word_exist=true;
-		  break;
-		  
-	  }
-  }
-  if(!user_word_exist){
-	  cout<<"The word does not exist."<<endl;
-  }
+  word_search(user_word,word_array,used);
+  
   return 0;
 
 }
