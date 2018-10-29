@@ -10,5 +10,5 @@ word.o:word.cpp word.h
 wordsearch.o:wordsearch.cpp wordsearch.h word.h
 	$(CXX) -c wordsearch.cpp
 clean:
-	rm main bag.o itemtype.o word.o wordsearch.o
+	rm wordsearch bag.o itemtype.o word.o wordsearch.o
 	
