@@ -16,45 +16,50 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-  string dir; //
-  vector<string> files = vector<string>();
-  Word word_array[1000];
-  int used=0;
+	string dir; //
+	vector<string> files = vector<string>();
+	Word word_array[1000];
+	  int used=0;
 
-  if (argc < 2)
-    {
-      cout << "No Directory specified; Exiting ..." << endl;
-      return(-1);
-    }
-  dir = string(argv[1]);
-  if (getdir(dir,files)!=0)
-    {
-      cout << "Error opening " << dir << "; Exiting ..." << endl;
-      return(-2);
-    }
+	if (argc < 2){
+		cout << "No Directory specified; Exiting ..." << endl;
+		  return(-1);
+		}
+	dir = string(argv[1]);
+	if (getdir(dir,files)!=0){
+		cout << "Error opening " << dir << "; Exiting ..." << endl;
+		 return(-2);
+	}
 
 	
-  string slash("/");
-  for (unsigned int i = 0;i < files.size();i++) {
-    if(files[i][0]=='.')continue; //skip hidden files
-    ifstream fin((string(argv[1])+slash+files[i]).c_str()); //open using absolute path
-    // ...read the file...
-    string word;
-    while(true){
-      fin>>word;
-      if(fin.eof()) { break;}
-      else {
-		  update_word_array(word,word_array,used,files[i]);
-			  
-      }
-    }
-    fin.close();
-  }
-  string user_word;
-  cout<<"Enter word: ";
-  cin>>user_word;
-  word_search(user_word,word_array,used);//search the word and get the files&count
-  
+    string slash("/");
+	for (unsigned int i = 0;i < files.size();i++) {
+		if(files[i][0]=='.')continue; //skip hidden files
+		ifstream fin((string(argv[1])+slash+files[i]).c_str()); //open using absolute path
+		// ...read the file...
+		string word;
+		while(true){
+		  fin>>word;
+		  if(fin.eof()) { break;}
+		  else {
+			  update_word_array(word,word_array,used,files[i]);
+				  
+		  }
+		}
+		fin.close();
+	}
+	while(true){  
+	  string user_word;
+	  
+	  
+	  cout<<"Enter (exit) to stop.Enter word: ";
+	  cin.ignore(1000,'\n');
+	  cin>>user_word;
+	  if(user_word=="(exit)"){
+		  break;
+	  }
+	  word_search(user_word,word_array,used);//search the word and get the files&count
+	}
   return 0;
 
 }
