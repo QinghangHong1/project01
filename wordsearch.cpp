@@ -53,12 +53,13 @@ int main(int argc, char* argv[])
 	  
 	  
 	  cout<<"Enter (exit) to stop.Enter word: ";
-	  cin.ignore(1000,'\n');
+	  
 	  cin>>user_word;
 	  if(user_word=="(exit)"){
 		  break;
 	  }
 	  word_search(user_word,word_array,used);//search the word and get the files&count
+	  cin.ignore(1000,'\n');
 	}
   return 0;
 
