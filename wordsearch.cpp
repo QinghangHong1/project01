@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
 	  string user_word;
 	  
 	  
-	  cout<<"Enter (exit) to stop.Enter word: ";
+	  cout<<"Enter \"(exit)\" to stop.Enter word: ";
 	  
 	  cin>>user_word;
 	  if(user_word=="(exit)"){
