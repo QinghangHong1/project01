@@ -92,7 +92,7 @@ void word_search(string word,Word word_array[],int length){
 	  }
   
 	  if(!word_exist){
-		  cout<<"The word does not exist."<<endl;
+		  cout<<"Word not found."<<endl;
 	  }
   }
 void update_word_array(string word, Word word_array[],int& length,string file){
