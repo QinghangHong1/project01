@@ -52,10 +52,10 @@ int main(int argc, char* argv[])
 	  string user_word;
 	  
 	  
-	  cout<<"Enter \"(exit)\" to stop.Enter word: ";
+	  cout<<"Enter word: ";
 	  
 	  cin>>user_word;
-	  if(user_word=="(exit)"){
+	  if(user_word=="-1"){
 		  break;
 	  }
 	  word_search(user_word,word_array,used);//search the word and get the files&count
